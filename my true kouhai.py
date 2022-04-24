@@ -38,14 +38,10 @@ async def on_message(message):
 
     if message.channel.id not in knowers_blacklist:
         words = message.content.split()
+        knowners = []
         for word in words:
-            if "er" in word.lower():
-                # ardly = ""
-                # for char in "I hardly know her":
-                #     if random() < 2/17:
-                #         ardly += "'"
-                #     else:
-                #         ardly += char
+            if "er" in word.lower() and word not in knowners:
+                knowners.append(word)
                 await message.channel.send(f"{word.capitalize()}? I 'ardly know 'er{word.lower().split('er')[-1]}!")
 
 with open("token.xd", "r") as xd:
